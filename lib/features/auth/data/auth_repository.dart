@@ -2,13 +2,14 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:league_master_admin/core/constants/api_constants.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/api/api_client.dart';
 import '../domain/auth_models.dart';
 
 part 'auth_repository.g.dart';
 
-@riverpod
+@riverpod 
 AuthRepository authRepository(Ref ref) {
   return AuthRepository(ref.watch(dioProvider));
 }
@@ -21,7 +22,7 @@ class AuthRepository {
   Future<AuthResponse> login(String email, String password) async {
     try {
       final response = await _dio.post(
-        '/auth/login',
+        ApiConstants.loginEndpoint,
         data: {
           'username': email,
           'password': password,
