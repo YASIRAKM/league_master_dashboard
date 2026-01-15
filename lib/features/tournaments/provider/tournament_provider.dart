@@ -24,4 +24,38 @@ class Tournament extends _$Tournament {
       return [];
     }
   }
+
+  Future<void> addTournament(
+      {required String name, required int maxTeams}) async {
+    state = const AsyncValue.loading();
+    try {
+      await (ref.read(tornamentRepositoryProvider) as TorunamentRepository)
+          .addTournament(name: name, maxTeams: maxTeams);
+      await getTournaments();
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
+
+  Future<void> updateTournament({required bool status, required int id}) async {
+    state = const AsyncValue.loading();
+    try {
+      await (ref.read(tornamentRepositoryProvider) as TorunamentRepository)
+          .updateTournament(status: status, id: id);
+      await getTournaments();
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
+
+  Future<void> deleteTournament({required int id}) async {
+    state = const AsyncValue.loading();
+    try {
+      await (ref.read(tornamentRepositoryProvider) as TorunamentRepository)
+          .deleteTournament(id: id);
+      await getTournaments();
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
 }

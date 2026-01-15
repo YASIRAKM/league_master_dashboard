@@ -6,4 +6,6 @@ class ApiConstants {
 
   //Tournament Endpoints
   static const String tournamentsEndpoint = '/tournaments';
+  static const String addTournamentsEndpoint = '/admin/tournaments';
+  static  String updateTournamentsEndpoint(int id) => '/admin/tournaments/$id';
 }
