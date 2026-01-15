@@ -10,7 +10,7 @@ List<TournamentModel> tournamentFromJson(List<dynamic> data) =>
 String tournamentToJson(List<TournamentModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class TournamentModel {
+final class TournamentModel {
   int id;
   String name;
   String status;

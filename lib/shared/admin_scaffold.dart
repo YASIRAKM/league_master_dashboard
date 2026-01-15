@@ -39,6 +39,10 @@ class AdminScaffold extends ConsumerWidget {
               title: const Text('Tournaments'),
               onTap: () => context.go('/tournaments'),
             ),
+             ListTile(
+              title: const Text('Teams'),
+              onTap: () => context.go('/teams'),
+            ),
           ],
         ),
       ),

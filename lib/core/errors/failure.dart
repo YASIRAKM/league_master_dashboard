@@ -1,24 +1,24 @@
-abstract class Failure {
+sealed class Failure {
   final String message;
   const Failure(this.message);
 }
 
-class ServerFailure extends Failure {
+final class ServerFailure extends Failure {
   const ServerFailure(super.message);
 }
 
-class ConnectionFailure extends Failure {
+final class ConnectionFailure extends Failure {
   const ConnectionFailure(super.message);
 }
 
-class DatabaseFailure extends Failure {
+final class DatabaseFailure extends Failure {
   const DatabaseFailure(super.message);
 }
 
-class ValidationFailure extends Failure {
+final class ValidationFailure extends Failure {
   const ValidationFailure(super.message);
 }
 
-class UnknownFailure extends Failure {
+final class UnknownFailure extends Failure {
   const UnknownFailure(super.message);
 }

@@ -14,7 +14,7 @@ tornamentRepository(Ref ref) {
   return TorunamentRepository(ref.watch(dioProvider));
 }
 
-class TorunamentRepository {
+final class TorunamentRepository {
   final Dio _dio;
 
   TorunamentRepository(this._dio);
@@ -34,12 +34,11 @@ class TorunamentRepository {
       throw UnknownFailure(e.toString());
     }
   }
-  Future<void> addTournament({required String name, required int maxTeams}) async {
+
+  Future<void> addTournament(
+      {required String name, required int maxTeams}) async {
     try {
-      Map params ={
-        "name": name,
-        "max_teams": maxTeams
-      };
+      Map params = {"name": name, "max_teams": maxTeams};
       await _dio.post(ApiConstants.addTournamentsEndpoint, data: params);
     } on DioException catch (e) {
       throw ServerFailure(e.errorMessage);
@@ -47,9 +46,10 @@ class TorunamentRepository {
       throw UnknownFailure(e.toString());
     }
   }
+
   Future<void> updateTournament({required bool status, required int id}) async {
     try {
-      Map params ={
+      Map params = {
         "status": status,
       };
       await _dio.put(ApiConstants.updateTournamentsEndpoint(id), data: params);
@@ -59,9 +59,31 @@ class TorunamentRepository {
       throw UnknownFailure(e.toString());
     }
   }
-  Future<void> deleteTournament({ required int id}) async {
+
+  Future<void> deleteTournament({required int id}) async {
     try {
       await _dio.delete(ApiConstants.updateTournamentsEndpoint(id));
+    } on DioException catch (e) {
+      throw ServerFailure(e.errorMessage);
+    } catch (e) {
+      throw UnknownFailure(e.toString());
+    }
+  }
+  Future<void> addTeamToTournament({required int tournamentId, required int teamId}) async {
+    try {
+      Map params = {
+        "team_id": teamId,
+      };
+      await _dio.post(ApiConstants.addTeamToTournamentEndpoint(tournamentId), data: params);
+    } on DioException catch (e) {
+      throw ServerFailure(e.errorMessage);
+    } catch (e) {
+      throw UnknownFailure(e.toString());
+    }
+  }
+  Future<void> generateLeague({required int tournamentId}) async {
+    try {
+      await _dio.post(ApiConstants.generateLeagueEndpoint(tournamentId));
     } on DioException catch (e) {
       throw ServerFailure(e.errorMessage);
     } catch (e) {

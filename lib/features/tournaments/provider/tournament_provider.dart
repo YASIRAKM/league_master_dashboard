@@ -58,4 +58,25 @@ class Tournament extends _$Tournament {
       state = AsyncValue.error(e, StackTrace.current);
     }
   }
+
+  Future<void> addTeamToTournament({required int tournamentId, required int teamId}) async {
+    state = const AsyncValue.loading();
+    try {
+      await (ref.read(tornamentRepositoryProvider) as TorunamentRepository)
+          .addTeamToTournament(tournamentId: tournamentId, teamId: teamId);
+      await getTournaments();
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
+  Future<void> generateLeague({required int tournamentId}) async {
+    state = const AsyncValue.loading();
+    try {
+      await (ref.read(tornamentRepositoryProvider) as TorunamentRepository)
+          .generateLeague(tournamentId: tournamentId);
+      await getTournaments();
+    } catch (e) {
+      state = AsyncValue.error(e, StackTrace.current);
+    }
+  }
 }

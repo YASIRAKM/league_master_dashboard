@@ -6,6 +6,7 @@ import 'package:league_master_admin/shared/widgets/common_error_widget.dart';
 import 'package:league_master_admin/shared/widgets/common_loading.dart';
 import 'package:league_master_admin/shared/widgets/common_add_button.dart';
 import 'package:league_master_admin/core/errors/failure.dart';
+import 'package:league_master_admin/features/tournaments/presentation/widgets/add_team_modal.dart';
 
 class TournamentsListScreen extends ConsumerWidget {
   const TournamentsListScreen({super.key});
@@ -53,8 +54,14 @@ class TournamentsListScreen extends ConsumerWidget {
                     label: Text('Status'),
                   ),
                   DataColumn(
+                    label: Text('Delete'),
+                  ),
+                  DataColumn(
                     label: Text('Actions'),
                   ),
+                  // DataColumn(
+                  //   label: Text('Actions'),
+                  // ),
                 ],
                 rows: List<DataRow>.generate(
                   tournaments.length,
@@ -83,6 +90,32 @@ class TournamentsListScreen extends ConsumerWidget {
                                   .read(tournamentProvider.notifier)
                                   .deleteTournament(id: tournaments[index].id);
                             }),
+                      ),
+                      DataCell(
+                        MenuBar(
+                          children: [
+                            MenuItemButton(
+                              child: const Text('Generate League'),
+                              onPressed: () 
+                              {
+
+                                ref.read(tournamentProvider.notifier).generateLeague(tournamentId: tournaments[index].id);
+                              },
+                            ),
+                            MenuItemButton(
+                              child: const Text('Add Team'),
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) =>
+                                      AddTeamToTournamentModal(
+                                    tournamentId: tournaments[index].id,
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

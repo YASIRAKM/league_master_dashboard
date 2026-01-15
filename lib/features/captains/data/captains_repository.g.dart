@@ -1,26 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_router.dart';
+part of 'captains_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'c2401e3d5cbdab6ace80741d4adc29fd419517cb';
+String _$captainsRepositoryHash() =>
+    r'5176303fa76b5a8ef04917a71270d04f38356824';
 
-/// See also [goRouter].
-@ProviderFor(goRouter)
-final goRouterProvider = AutoDisposeProvider<GoRouter>.internal(
-  goRouter,
-  name: r'goRouterProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$goRouterHash,
+/// See also [captainsRepository].
+@ProviderFor(captainsRepository)
+final captainsRepositoryProvider = AutoDisposeProvider<Object?>.internal(
+  captainsRepository,
+  name: r'captainsRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$captainsRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef GoRouterRef = AutoDisposeProviderRef<GoRouter>;
+typedef CaptainsRepositoryRef = AutoDisposeProviderRef<Object?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

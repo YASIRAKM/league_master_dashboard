@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:league_master_admin/features/teams/presentation/teams_view.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../features/auth/providers/auth_provider.dart';
 import '../../features/auth/presentation/login_screen.dart';
@@ -67,6 +68,10 @@ GoRouter goRouter(Ref ref) {
           GoRoute(
             path: '/tournaments',
             builder: (context, state) => const TournamentsListScreen(),
+          ),
+          GoRoute(
+            path: '/teams',
+            builder: (context, state) => const TeamsView(),
           ),
         ],
       ),

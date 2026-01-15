@@ -275,6 +275,7 @@ class _SocialButton extends StatelessWidget {
   final Color color;
 
   const _SocialButton({
+    super.key,
     required this.icon,
     required this.onTap,
     required this.color,
