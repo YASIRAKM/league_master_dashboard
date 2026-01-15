@@ -14,7 +14,7 @@ class Tournament extends _$Tournament {
   Future<List<TournamentModel>> getTournaments() async {
     state = const AsyncValue.loading();
     try {
-      List<TournamentModel> tournaments =
+      List<TournamentModel> tournaments  =
           await (ref.read(tornamentRepositoryProvider) as TorunamentRepository)
               .getTournaments();
       state = AsyncValue.data(tournaments);

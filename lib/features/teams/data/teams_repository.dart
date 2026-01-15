@@ -22,7 +22,9 @@ final class TeamsRepository {
       final response = await _dio.get(ApiConstants.teamsEndpoint);
 
       if (response.statusCode == 200) {
-        return teamModelFromJson(response.data);
+        return (response.data as List)
+            .map((e) => TeamModel.fromJson(e))
+            .toList();
       } else {
         throw ServerFailure('Failed to load teams: ${response.statusCode}');
       }
